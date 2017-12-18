@@ -1,15 +1,8 @@
-package main
-
-import (
-	"fmt"
-	"os"
-)
-
 //
 // KnightsTour.go - perform a Knights tour in golang.
 //
 // example:
-//	 ./KnightsTour
+//	 $ go run KnightsTour.go
 //
 //   0 59 38 33 30 17  8 63
 //  37 34 31 60  9 62 29 16
@@ -19,8 +12,13 @@ import (
 //  47 50 45 54 25 20 11 14
 //  56 43 52  3 22 13 24  5
 //  51 46 55 44 53  4 21 12
-//
-//
+
+package main
+
+import (
+	"fmt"
+	"os"
+)
 
 // The size of the chessboard is NxN.
 const N = 8
@@ -33,9 +31,7 @@ func main() {
 	xmoves := []int{2, 1, -1, -2, -2, -1, 1, 2}
 	ymoves := []int{1, 2, 2, 1, -1, -2, -2, -1}
 
-	//
 	// Initialize board with values of -1 to denote unvisited squares.
-	//
 	for i := 0; i < N; i++ {
 		for j := 0; j < N; j++ {
 			board[i][j] = -1
@@ -53,10 +49,7 @@ func main() {
 
 }
 
-//
-// walk_board - walk a Knight chess piece on a solved knights
-// tour of an 8x8 chessboard.
-//
+// walk_board - walk a Knight chess piece on a solved knights tour of an 8x8 chessboard.
 func walk_board(x int, y int, m int, board [N][N]int, xmoves []int, ymoves []int) bool {
 	var next_x int
 	var next_y int
@@ -81,17 +74,13 @@ func walk_board(x int, y int, m int, board [N][N]int, xmoves []int, ymoves []int
 	return false
 }
 
-//
 // The knight may move only if the target square is set
 // back to -1 via backtracking or if the square is unexplored.
-//
 func can_move(x int, y int, board [N][N]int) bool {
 	return (x >= 0 && x < N && y >= 0 && y < N && board[x][y] == -1)
 }
 
-//
 // Print a solved NxN chessboard.
-//
 func print_board(board [N][N]int) {
 	lines := 0
 	for i := 0; i < N; i++ {
